@@ -38,7 +38,7 @@ SET CONFIGURE_BAT=%cd%\configure.bat
 if not exist %OUTPUT_PATH% mkdir %OUTPUT_PATH%
 pushd %OUTPUT_PATH%
 REM CALL %CONFIGURE_BAT% -mp -confirm-license -opensource -platform win32-msvc2015 -debug-and-release -shared -prefix %PREFIX_PATH% -nomake tests -nomake examples -no-bearermanagement -skip qtwebview -skip qtwebengine
-CALL %CONFIGURE_BAT% -mp -confirm-license -opensource -platform win32-msvc2015 -debug-and-release -shared -prefix %PREFIX_PATH% -nomake tests -nomake examples -no-bearermanagement
+CALL %CONFIGURE_BAT% -mp -confirm-license -opensource -platform win32-msvc2015 -release -shared -prefix %PREFIX_PATH% -nomake tests -nomake examples
 popd
 pushd %OUTPUT_PATH%
 nmake > nmake_info_output.log
