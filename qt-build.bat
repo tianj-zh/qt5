@@ -14,7 +14,7 @@ IF "%~2"=="" (
 CALL "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86
 
 REM ********** Update include & lib to support xp win sdk 7.1A **********
-SET PATH=C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin;D:\Qt\Qt5.10.1\Tools\QtCreator\bin;%PATH%
+SET PATH=C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\bin;D:\Qt\Qt5.6.3\Tools\QtCreator\bin;%PATH%
 SET INCLUDE=C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\include;C:\Program Files (x86)\Windows Kits\8.1\Include;%INCLUDE%
 SET LIB=C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\lib;%LIB%
 REM SET CL=/D_USING_V110_SDK71_;%CL%
@@ -38,7 +38,7 @@ SET CONFIGURE_BAT=%cd%\configure.bat
 if not exist %OUTPUT_PATH% mkdir %OUTPUT_PATH%
 pushd %OUTPUT_PATH%
 REM CALL %CONFIGURE_BAT% -mp -confirm-license -opensource -platform win32-msvc2015 -debug-and-release -shared -prefix %PREFIX_PATH% -nomake tests -nomake examples -no-bearermanagement -skip qtwebview -skip qtwebengine
-CALL %CONFIGURE_BAT% -mp -confirm-license -opensource -platform win32-msvc2015 -release -shared -prefix %PREFIX_PATH% -nomake tests -nomake examples
+CALL %CONFIGURE_BAT% -mp -confirm-license -opensource -platform win32-msvc2015 -release -force-debug-info -shared -prefix %PREFIX_PATH% -nomake tests -nomake examples
 popd
 pushd %OUTPUT_PATH%
 nmake > nmake_info_output.log
