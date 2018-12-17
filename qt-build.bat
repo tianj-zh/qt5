@@ -3,12 +3,13 @@ REM Set up \Microsoft Visual Studio 2015, where <arch> is amd64, x86, etc.
 
 IF "%~1"=="" goto missing
 
-SET PREFIX_PATH="%1"
+SET SOURCE_PATH=%~dp0
+SET PREFIX_PATH=%~1
 
 IF "%~2"=="" (
-  SET OUTPUT_PATH=%cd%
+  SET OUTPUT_PATH=%SOURCE_PATH%
 ) else (
-  SET OUTPUT_PATH="%2"
+  SET OUTPUT_PATH=%~2
 )
 
 CALL "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86
@@ -25,7 +26,7 @@ REM SET PATH=D:\Ruby22\bin;D:\Perl\bin;D:\Python\Python27;%PATH%
 SET PATH=C:\Ruby24\bin;C:\Perl\bin;C:\Python27;%PATH%
 
 REM ********** Set up qt source env **********
-SET PATH=%cd%\qtbase\bin;%cd%\gnuwin32\bin;%PATH%
+SET PATH=%SOURCE_PATH%\qtbase\bin;%SOURCE_PATH%\gnuwin32\bin;%PATH%
 
 REM Uncomment the below line when using a git checkout of the source repository
 REM SET PATH=%_ROOT%\qtrepotools\bin;%PATH%
@@ -34,13 +35,10 @@ set _ROOT=
 REM nmake module-qtwebengine-qmake_all
 REM Generate makefile
 
-SET CONFIGURE_BAT=%cd%\configure.bat
 if not exist %OUTPUT_PATH% mkdir %OUTPUT_PATH%
 pushd %OUTPUT_PATH%
-REM CALL %CONFIGURE_BAT% -mp -confirm-license -opensource -platform win32-msvc2015 -debug-and-release -shared -prefix %PREFIX_PATH% -nomake tests -nomake examples -no-bearermanagement -skip qtwebview -skip qtwebengine
-CALL %CONFIGURE_BAT% -mp -confirm-license -opensource -platform win32-msvc2015 -release -force-debug-info -shared -prefix %PREFIX_PATH% -nomake tests -nomake examples
-popd
-pushd %OUTPUT_PATH%
+REM CALL %SOURCE_PATH%\configure.bat -mp -confirm-license -opensource -platform win32-msvc2015 -debug-and-release -shared -prefix %PREFIX_PATH% -nomake tests -nomake examples -no-bearermanagement -skip qtwebview -skip qtwebengine
+CALL %SOURCE_PATH%\configure.bat -mp -confirm-license -opensource -platform win32-msvc2015 -release -force-debug-info -shared -prefix %PREFIX_PATH% -nomake tests -nomake examples
 nmake > nmake_info_output.log
 nmake install
 popd
