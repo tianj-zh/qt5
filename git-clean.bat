@@ -1,1 +1,2 @@
-git clean -xdf ; git submodule foreach "git clean -xdf"
+git clean -xdf
+git submodule foreach --recursive "git clean -xdf"
