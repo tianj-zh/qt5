@@ -1,3 +1,4 @@
+@echo off
 SET SOURCE_PATH=%~dp0
 pushd %SOURCE_PATH%
 git clean -xdf
