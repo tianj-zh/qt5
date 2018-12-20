@@ -38,7 +38,7 @@ REM Generate makefile
 if not exist %OUTPUT_PATH% mkdir %OUTPUT_PATH%
 pushd %OUTPUT_PATH%
 REM CALL %SOURCE_PATH%\configure.bat -mp -confirm-license -opensource -platform win32-msvc2015 -debug-and-release -shared -prefix %PREFIX_PATH% -nomake tests -nomake examples -no-bearermanagement -skip qtwebview -skip qtwebengine
-CALL %SOURCE_PATH%\configure.bat -mp -confirm-license -opensource -platform win32-msvc2015 -release -force-debug-info -shared -prefix %PREFIX_PATH% -nomake tests -nomake examples
+CALL %SOURCE_PATH%\configure.bat -mp -confirm-license -opensource -platform %QMAKESPEC% -debug-and-release -release -opengl dynamic -prefix %PREFIX_PATH% -nomake tests -nomake examples
 nmake > nmake_info_output.log
 nmake install
 popd
@@ -46,7 +46,7 @@ goto :eof
 REM configure.bat -list-features
 :missing
 echo Usage: qt_build.bat <prefix_path> <output_path>
-echo E.g    qt-build.bat C:\Qt\Qt5.6.2\5.6.2\msvc2015 H:\open_source_build_bin
+echo E.g    qt-build.bat C:\Qt\Qt5.6.3\5.6.3\msvc2015 H:\open_source_build_bin
 echo        <prefix_path> must be set
 echo        <output_path> is option
 goto :eof
