@@ -37,7 +37,7 @@ REM Generate makefile
 
 if not exist %OUTPUT_PATH% mkdir %OUTPUT_PATH%
 pushd %OUTPUT_PATH%
-CALL %SOURCE_PATH%\configure.bat -mp -confirm-license -opensource -platform %QMAKESPEC% -debug-and-release -release -force-debug-info -force-asserts -opengl dynamic -prefix %PREFIX_PATH% -nomake tests -nomake examples
+CALL %SOURCE_PATH%\configure.bat -mp -confirm-license -opensource -platform %QMAKESPEC% -debug-and-release -release -force-debug-info -opengl dynamic -prefix %PREFIX_PATH% -nomake tests -nomake examples
 nmake > nmake_info_output.log
 nmake install
 popd
