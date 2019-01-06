@@ -45,7 +45,7 @@ goto :eof
 REM configure.bat -list-features
 :missing
 echo Usage: qt_build.bat <prefix_path> <output_path>
-echo E.g    qt-build.bat C:\Qt\Qt5.6.3\5.6.3\msvc2015 H:\open_source_build_bin
+echo E.g    qt-build.bat C:\Qt\Qt5.6.3\5.6.3\msvc2015 H:\open_source_build_bin\qt5.6.3-1
 echo        <prefix_path> must be set
 echo        <output_path> is option
 goto :eof
